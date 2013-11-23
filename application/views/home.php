@@ -1,3 +1,8 @@
+<? //$this->load->view('template/header'); ?>
+<? //$this->load->view('template/nav'); ?>
+<!-- <h1>Home Page</h1> -->
+<? //$this->load->view('template/footer'); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
