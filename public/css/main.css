@@ -1,8 +1,30 @@
 body {}
 h1 {
-	color: red;
+	color: #019ad2;
 }
 
 #accounts, #tweets{
 	list-style-type:none;
+}
+
+#accounts_tweets{
+	width:50%;
+}
+.left{
+	float:left;
+}
+
+.right{
+
+	float:right;
+}
+
+li{
+	border-left:.5em solid #019ad2;
+	border-right:.5em solid #019ad2;
+	border-top: .1em solid gray;
+	border-bottom: .1em solid gray;
+	border-radius: .5em;
+	margin-top:.7em;
+	padding: .4em;
 }
