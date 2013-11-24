@@ -38,6 +38,8 @@
 |
 */
 
+$route['api/twitter-accounts'] = "api/twitter_accounts";
+
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 
