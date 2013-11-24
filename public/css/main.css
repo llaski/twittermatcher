@@ -1,4 +1,6 @@
-body {}
+body {
+}
+
 h1 {
 	color: #019ad2;
 }
@@ -27,4 +29,10 @@ li{
 	border-radius: .5em;
 	margin-top:.7em;
 	padding: .4em;
+	cursor:move;
+	-webkit-user-select: none;        
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
