@@ -1,8 +1,8 @@
 function init() {
-  $('.each_account').draggable({
+  $('.each_tweet').draggable({
 
-   	snap: '.each_tweet',
-	snapMode: 'outer'
+   	snap: '.each_account',
+
 
 });
 }
