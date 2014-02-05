@@ -10,7 +10,7 @@ h1 {
 }
 
 #accounts_tweets{
-	width:50%;
+	width:100%;
 }
 .left{
 	float:left;
@@ -19,6 +19,10 @@ h1 {
 .right{
 
 	float:right;
+}
+
+.clear{
+	clear:left;
 }
 
 li{
@@ -40,4 +44,10 @@ li{
 .each_tweet{
 	background-color: #019ad2;
 	color: white;
+	width:40%;
+}
+
+.each_account{
+margin-bottom: 1.5em;
+width:10%;
 }
