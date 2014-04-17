@@ -16,4 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/api/twitter', 'TwitterController@index');
+Route::group(array('prefix' => 'api'), function()
+{
+    Route::get('twitter', 'TwitterController@index');
+});
