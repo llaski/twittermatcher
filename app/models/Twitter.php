@@ -26,10 +26,12 @@ class Twitter {
 
             if (isset($results[0]))
             {
+                //Clean Tweet
+
                 $results = array(
                     'name' => $results[0]['user']['name'],
                     'screen_name' => $results[0]['user']['screen_name'],
-                    'tweet' => $results[0]['text'],
+                    'tweet' => $this->cleanTweet($results[0]['text']),
                     'tweet_time' => date('Y-m-d H:i:s', strtotime($results[0]['created_at'])),
                     'profile_img' => $results[0]['user']['profile_image_url'],
                 );
@@ -39,6 +41,18 @@ class Twitter {
         }
 
         return $results;
+    }
+
+    /**
+     * Clean Tweet
+     * - removes links
+     * - removes invalid characters (non utf-8)
+     * @param string $tweet
+     * @return string
+     */
+    private function cleanTweet($tweet)
+    {
+        return $tweet; //preg_replace('/(http:.*)[ ]?/', '', $tweet);
     }
 
 }
