@@ -8,11 +8,13 @@ class TwitterController extends \BaseController {
 	{
 		$twitter = new Twitter();
 
-		$katyperry_results = $twitter->getUserTweetsByScreename('katyperry');
-		$obama_results = $twitter->getUserTweetsByScreename('BarackObama');
-		$ladygaga_results = $twitter->getUserTweetsByScreename('ladygaga');
+		$results = array();
+		$accounts = TwitterAccount::getShuffledAccounts(5);
 
-		return Response::json(array('results' => array($katyperry_results, $obama_results, $ladygaga_results)));
+		foreach ($accounts as $account)
+			$results[] = $twitter->getUserTweetsByScreename($account->screen_name);
+
+		return Response::json(array('results' => $results));
 	}
 
 

@@ -3,6 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use GameData\TwitterAccounts;
 
 class RetrieveTopTwitterAccounts extends Command {
 
@@ -37,13 +38,10 @@ class RetrieveTopTwitterAccounts extends Command {
 	 */
 	public function fire()
 	{
-		//hit "website" (any datasource) for top twitter accounts
-		//parse results to clean up screenames
-		//store screennames in database (use sqlite for now)
-		$accounts = DB::select('select * from twitter_account');
-		print_r($this->option('num-accounts'));
-		print_r($accounts);
-		exit;
+		$account_scraper = new TwitterAccounts($this->option('num-accounts'));
+		$accounts = $account_scraper->getAccountData();
+		foreach ($accounts as $account)
+			TwitterAccount::firstOrCreate(array('screen_name' => $account));
 	}
 
 	/**
@@ -64,7 +62,7 @@ class RetrieveTopTwitterAccounts extends Command {
 	protected function getOptions()
 	{
 		return array(
-			array('num-accounts', null, InputOption::VALUE_OPTIONAL, 'Num Accounts', 100),
+			array('num-accounts', null, InputOption::VALUE_OPTIONAL, 'Num Accounts', 10),
 		);
 	}
 

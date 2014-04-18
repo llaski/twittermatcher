@@ -107,7 +107,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'Thujohn\Twitter\TwitterServiceProvider'
+		'Thujohn\Twitter\TwitterServiceProvider',
+
+		'Way\Generators\GeneratorsServiceProvider'
 	),
 
 	/*
