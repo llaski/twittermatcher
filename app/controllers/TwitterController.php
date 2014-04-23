@@ -4,7 +4,7 @@ use Models\Twitter;
 
 class TwitterController extends \BaseController {
 
-	public function index()
+	public function getGameData()
 	{
 		$twitter = new Twitter();
 
@@ -17,5 +17,11 @@ class TwitterController extends \BaseController {
 		return Response::json(array('results' => $results));
 	}
 
+	public function getTopAccounts($num_accounts = 100)
+	{
+		$results = TwitterAccount::take($num_accounts)->get()->toArray();
+
+		return Response::json(array('results' => $results));
+	}
 
 }

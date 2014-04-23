@@ -18,5 +18,11 @@ Route::get('/', function()
 
 Route::group(array('prefix' => 'api'), function()
 {
-    Route::get('twitter', 'TwitterController@index');
+	Route::group(array('prefix' => 'twitter'), function()
+	{
+		Route::get('game-data', 'TwitterController@getGameData');
+    	Route::get('accounts/{num_accounts?}', 'TwitterController@getTopAccounts')
+    	->where('num_accounts', '[0-9]+');
+	});
+    
 });

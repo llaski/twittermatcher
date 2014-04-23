@@ -6,6 +6,8 @@ use Twitter as TwitterAPI;
 
 class Twitter {
 
+    private $url = 'https://twitter.com/';
+
     /**
      * Get Tweets by User Screename
      * @param  string $screen_name
@@ -31,6 +33,7 @@ class Twitter {
                     'screen_name' => $results[0]['user']['screen_name'],
                     'tweet' => $results[0]['text'],
                     'tweet_time' => date('Y-m-d H:i:s', strtotime($results[0]['created_at'])),
+                    'url' => $this->url.$results[0]['user']['screen_name'],
                     'profile_img' => $results[0]['user']['profile_image_url'],
                 );
             }
