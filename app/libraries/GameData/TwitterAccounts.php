@@ -1,6 +1,7 @@
 <?php namespace GameData;
 
 use Symfony\Component\DomCrawler\Crawler;
+
 class TwitterAccounts implements AccountsInterface {
 
 	private $data_url = 'http://twitaholic.com';
@@ -15,7 +16,7 @@ class TwitterAccounts implements AccountsInterface {
 	{
 		$html = file_get_contents($this->data_url);
 
-		//Not ideally efficient right, goes through all results reguardless of num count
+		//Not ideally efficient right now, goes through all results reguardless of num count
 		$this->crawler->add($html);
 		$results = $this->crawler->filter('.statcol_name')->each(function(Crawler $node, $i){
 			return substr($node->text(), stripos($node->text(), '@') + 1);

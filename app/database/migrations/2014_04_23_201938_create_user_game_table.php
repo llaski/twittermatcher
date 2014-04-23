@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateTwitterAccountTable extends Migration {
+class CreateUserGameTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,14 @@ class CreateTwitterAccountTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('twitter_account', function(Blueprint $table)
-		{
+		Schema::create('user_game', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('screen_name')->unique();
+			$table->string('username', 100)->unique();
+			$table->tinyInteger('score')->unsigned();
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.
@@ -27,7 +28,7 @@ class CreateTwitterAccountTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('twitter_account');
+		Schema::dropIfExists('user_game');
 	}
 
 }

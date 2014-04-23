@@ -2,6 +2,14 @@
 
 /*
 |--------------------------------------------------------------------------
+| IoC Bindings - Move out eventually
+|--------------------------------------------------------------------------
+*/
+
+App::bind('TwitterMatcher\GameData\GameDataRepositoryInterface', 'TwitterMatcher\GameData\EloquentGameDataRepository');
+
+/*
+|--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
@@ -18,11 +26,8 @@ Route::get('/', function()
 
 Route::group(array('prefix' => 'api'), function()
 {
-	Route::group(array('prefix' => 'twitter'), function()
-	{
-		Route::get('game-data', 'TwitterController@getGameData');
-    	Route::get('accounts/{num_accounts?}', 'TwitterController@getTopAccounts')
-    	->where('num_accounts', '[0-9]+');
-	});
-    
+	Route::get('game-data', 'GameDataController@getRandomGameData');
+	// Route::get('accounts/{num_accounts?}', 'TwitterController@getTopAccounts')
+	// ->where('num_accounts', '[0-9]+');
+
 });

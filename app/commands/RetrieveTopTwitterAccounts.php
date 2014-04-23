@@ -3,7 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use GameData\TwitterAccounts;
+// use TwitterMatcher\GameData\RetrieveGameDataRepositoryInterface as DataRetriever;
 
 class RetrieveTopTwitterAccounts extends Command {
 
@@ -19,16 +19,20 @@ class RetrieveTopTwitterAccounts extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Retrieve\'s the top Twitter Accounts (Max/Default is 100)';
+	protected $description = 'Retrieve\'s the top Twitter Accounts (Max/Default is 10)';
+
+	protected $data_retriever;
 
 	/**
 	 * Create a new command instance.
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(DataRetriever $data_retriever)
 	{
 		parent::__construct();
+
+		$this->data_retriever = $data_retriever;
 	}
 
 	/**
@@ -38,10 +42,10 @@ class RetrieveTopTwitterAccounts extends Command {
 	 */
 	public function fire()
 	{
-		$account_scraper = new TwitterAccounts($this->option('num-accounts'));
-		$accounts = $account_scraper->getAccountData();
-		foreach ($accounts as $account)
-			TwitterAccount::firstOrCreate(array('screen_name' => $account));
+		if ( ! $this->validateOptions()) exit;
+
+		$accounts = $this->data_retriever->getAccountData($this->option('num-accounts'));
+		$this->data_retriever->storeAccountData($accounts);
 	}
 
 	/**
@@ -64,6 +68,22 @@ class RetrieveTopTwitterAccounts extends Command {
 		return array(
 			array('num-accounts', null, InputOption::VALUE_OPTIONAL, 'Num Accounts', 10),
 		);
+	}
+
+	/**
+	 * Validate Options
+	 * @return boolean
+	 */
+	private function validateOptions()
+	{
+		$result = true;
+		if (!is_numeric($this->option('num-accounts')) || $this->option('num-accounts') > 100)
+		{
+			$result = false;
+			$this->error('Invalid Num Accounts Value.');
+		}
+
+		return $result;
 	}
 
 }
