@@ -31,7 +31,7 @@ class TwitterAPI {
             $results = array(
                 'name' => $user_data[0]['user']['name'],
                 'screen_name' => $user_data[0]['user']['screen_name'],
-                'tweet' => $this->cleanTweet($user_data[0]['text']),
+                'tweet' => $user_data[0]['text'],
                 'tweet_time' => date('Y-m-d H:i:s', strtotime($user_data[0]['created_at'])),
                 'url' => $this->url.$user_data[0]['user']['screen_name'],
                 'profile_img' => $user_data[0]['user']['profile_image_url'],

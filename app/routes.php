@@ -2,14 +2,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| IoC Bindings - Move out eventually
-|--------------------------------------------------------------------------
-*/
-
-App::bind('TwitterMatcher\GameData\GameDataRepositoryInterface', 'TwitterMatcher\GameData\EloquentGameDataRepository');
-
-/*
-|--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |

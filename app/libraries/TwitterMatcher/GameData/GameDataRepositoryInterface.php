@@ -3,5 +3,7 @@
 interface GameDataRepositoryInterface {
 
     public function getShuffledData($num_accounts = 10);
+    public function getAccountByScreenname($screen_name);
+    public function createAccount($data);
 
 }

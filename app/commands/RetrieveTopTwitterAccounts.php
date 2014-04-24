@@ -3,7 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-// use TwitterMatcher\GameData\RetrieveGameDataRepositoryInterface as DataRetriever;
+use TwitterMatcher\GameData\RetrieveGameDataRepositoryInterface as DataRetriever;
 
 class RetrieveTopTwitterAccounts extends Command {
 
@@ -44,8 +44,11 @@ class RetrieveTopTwitterAccounts extends Command {
 	{
 		if ( ! $this->validateOptions()) exit;
 
+		$this->info('Retrieving Account Screennames from source...');
 		$accounts = $this->data_retriever->getAccountData($this->option('num-accounts'));
+		$this->info('Storing Account Data...');
 		$this->data_retriever->storeAccountData($accounts);
+		$this->info('Complete.');
 	}
 
 	/**
