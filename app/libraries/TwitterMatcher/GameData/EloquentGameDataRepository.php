@@ -30,6 +30,10 @@ class EloquentGameDataRepository implements GameDataRepositoryInterface {
     public function createAccount($data)
     {
         //This method is not well optimized for the purpose of creating rows in the event of duplicate unique indexes - find different way or write custom method/query
-        return $this->game_data->firstOrCreate($data);
+        $account = $this->game_data->where('screen_name', $data['screen_name'])->first();
+        if ($account && $account->exists)
+            return $account;
+        else
+            return $this->game_data->create($data);
     }
 }
