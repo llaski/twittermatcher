@@ -1,5 +1,7 @@
 <?php
 
+use TwitterMatcher\GameData\GameDataRepositoryInterface as GameDataRepository;
+
 class HomeController extends BaseController {
 
 	/*
@@ -15,9 +17,17 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+    public function __construct(GameDataRepository $game_data)
+    {
+        $this->game_data = $game_data;
+    }
+
+	public function index()
 	{
-		return View::make('hello');
+        $game = $this->game_data->getShuffledData();
+
+		return View::make('index')
+            ->with('game_data', $game);
 	}
 
 }

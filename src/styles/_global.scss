@@ -1,0 +1,14 @@
+$icon-font-path: "/fonts/";
+
+@import '../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}

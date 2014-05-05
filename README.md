@@ -19,7 +19,7 @@ Development
     - Fix for Storage Directory
 
         Quick Fix - DO NOT USE ON PRODUCTION
-        chmod -R 777 app/storage
+        sudo chmod -R 777 app/storage
 
     When creating new files in new directories, you may need to add them to the mapping to be autoloaded. Check classmap in composer.json. Once you create new files, run:
 

@@ -32,7 +32,7 @@ class ScraperRetrieveGameDataRepository implements RetrieveGameDataRepositoryInt
                 if ($data)
                 {
                     $data['screen_name'] = $screen_name;
-                    $this->game_data->createAccount($data);
+                    $this->game_data->createOrUpdateAccount($data);
                 }
             }
         }

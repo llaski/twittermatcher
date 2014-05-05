@@ -27,12 +27,17 @@ class EloquentGameDataRepository implements GameDataRepositoryInterface {
         return $this->game_data->orderBy(DB::raw('RAND()'))->take($num_accounts)->get()->toArray();
     }
 
-    public function createAccount($data)
+    public function createOrUpdateAccount($data)
     {
         //This method is not well optimized for the purpose of creating rows in the event of duplicate unique indexes - find different way or write custom method/query
         $account = $this->game_data->where('screen_name', $data['screen_name'])->first();
         if ($account && $account->exists)
+        {
+            $account->tweet = $data['tweet'];
+            $account->tweet_time = $data['tweet_time'];
+            $account->save();
             return $account;
+        }
         else
             return $this->game_data->create($data);
     }
