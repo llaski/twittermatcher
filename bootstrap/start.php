@@ -24,15 +24,15 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-// $env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(array(
 
-// 	'local' => array('your-machine-name'),
+	'local' => array('llaski.resolute.com'),
 
-// ));
+));
 
-$env = $app->detectEnvironment(function(){
-    return stripos($_SERVER['HTTP_HOST'], 'local') !== FALSE ? 'local' : 'production';
-});
+// $env = $app->detectEnvironment(function(){
+//     return stripos($_SERVER['HTTP_HOST'], 'local') !== FALSE ? 'local' : 'production';
+// });
 
 /*
 |--------------------------------------------------------------------------

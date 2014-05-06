@@ -24,6 +24,7 @@ class EloquentGameDataRepository implements GameDataRepositoryInterface {
 
     public function getShuffledData($num_accounts = 10)
     {
+        return $this->game_data->take($num_accounts)->get()->toArray();
         return $this->game_data->orderBy(DB::raw('RAND()'))->take($num_accounts)->get()->toArray();
     }
 
