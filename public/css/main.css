@@ -7588,21 +7588,20 @@ button.close {
     display: none !important;
   }
 }
-/* Space out content a bit */
-/* line 6, ../../src/styles/_global.scss */
+/* line 5, ../../src/styles/_global.scss */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-/* line 11, ../../src/styles/_global.scss */
+/* line 10, ../../src/styles/_global.scss */
 ul {
   list-style: none;
   padding: 0;
 }
 
-/* line 1, ../../src/styles/_app.scss */
-.circle, .handles li img {
+/* line 17, ../../src/styles/_global.scss */
+.circle, .accounts img, .tweets img {
   display: inline-block;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -7611,48 +7610,18 @@ ul {
   border-radius: 50%;
 }
 
-/* line 7, ../../src/styles/_app.scss */
-.handles li {
-  display: inline-block;
+/* line 22, ../../src/styles/_global.scss */
+.center {
+  margin: 0 auto;
   text-align: center;
-  padding: 20px;
-  background: transparent;
-}
-/* line 13, ../../src/styles/_app.scss */
-.handles li img {
-  width: 50px;
-  height: 50px;
 }
 
-/* line 23, ../../src/styles/_app.scss */
-.tweets li {
-  text-align: center;
-  padding: 20px;
-  width: 19%;
-  display: inline-block;
-}
-/* line 29, ../../src/styles/_app.scss */
-.tweets li .droparea {
-  height: 120px;
-  width: 100%;
-  display: inline-block;
-  border: 2px dotted gray;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-/* line 36, ../../src/styles/_app.scss */
-.tweets li .droparea.over {
-  background: yellow;
-}
-/* line 40, ../../src/styles/_app.scss */
-.tweets li .droparea.correct {
-  background: green;
+/* line 27, ../../src/styles/_global.scss */
+img.center {
+  display: block;
 }
 
-/* line 47, ../../src/styles/_app.scss */
+/* line 31, ../../src/styles/_global.scss */
 [draggable] {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7661,13 +7630,61 @@ ul {
   user-select: none;
 }
 
-/* line 51, ../../src/styles/_app.scss */
-.center {
-  margin: 0 auto;
-  text-align: center;
+/*****
+    Shortcuts
+*****/
+/* line 39, ../../src/styles/_global.scss */
+.left {
+  float: left !important;
 }
 
-/* line 55, ../../src/styles/_app.scss */
-img.center {
-  display: block;
+/* line 40, ../../src/styles/_global.scss */
+.right {
+  float: right !important;
+}
+
+/* line 42, ../../src/styles/_global.scss */
+.txt-center {
+  text-align: center !important;
+}
+
+/* line 2, ../../src/styles/_content.scss */
+.accounts li, .tweets li {
+  display: inline-block;
+  padding: 20px;
+  width: 19%;
+  vertical-align: top;
+  text-align: center;
+}
+/* line 10, ../../src/styles/_content.scss */
+.accounts img, .tweets img {
+  width: 50px;
+  height: 50px;
+}
+
+/* line 27, ../../src/styles/_content.scss */
+.tweets li .droparea {
+  height: 120px;
+  padding-top: 20px;
+  width: 100%;
+  display: inline-block;
+  border: 2px dotted gray;
+  margin-bottom: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+/* line 36, ../../src/styles/_content.scss */
+.tweets li .droparea.over {
+  background: #fcf8e3;
+}
+/* line 40, ../../src/styles/_content.scss */
+.tweets li .droparea.correct {
+  background: #dff0d8;
+}
+/* line 45, ../../src/styles/_content.scss */
+.tweets li p {
+  word-wrap: break-word;
 }

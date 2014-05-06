@@ -2,7 +2,6 @@ $icon-font-path: "/fonts/";
 
 @import '../bower_components/bootstrap-sass/vendor/assets/stylesheets/bootstrap';
 
-/* Space out content a bit */
 body {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -12,3 +11,32 @@ ul {
     list-style: none;
     padding: 0;
 }
+
+//General Classes
+
+.circle {
+    display: inline-block;
+    @include border-radius(50%);
+}
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+img.center {
+    display: block;
+}
+
+[draggable] {
+    @include user-select(none);
+}
+
+/*****
+    Shortcuts
+*****/
+
+.left { float: left!important; }
+.right { float: right!important; }
+
+.txt-center { text-align: center!important; }

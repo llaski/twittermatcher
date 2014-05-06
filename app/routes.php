@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
 Route::group(array('prefix' => 'api'), function()
 {

@@ -24,7 +24,6 @@ class EloquentGameDataRepository implements GameDataRepositoryInterface {
 
     public function getShuffledData($num_accounts = 10)
     {
-        return $this->game_data->take($num_accounts)->get()->toArray();
         return $this->game_data->orderBy(DB::raw('RAND()'))->take($num_accounts)->get()->toArray();
     }
 
@@ -36,7 +35,11 @@ class EloquentGameDataRepository implements GameDataRepositoryInterface {
         {
             $account->tweet = $data['tweet'];
             $account->tweet_time = $data['tweet_time'];
+            $account->url = $data['url'];
+            $account->profile_img = $data['profile_img'];
+            $account->status = $data['status'];
             $account->save();
+
             return $account;
         }
         else

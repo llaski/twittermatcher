@@ -3,46 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>TwitterMatcher</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+
         {{ HTML::style('css/main.css') }}
     </head>
     <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
 
         <div class="container">
             {{ HTML::image('img/twitter-icon.png', 'Twitter Matcher', array('class' => 'center')) }}
             <div class="row">
-                <div class="col-md-12 well">
-                    <ul class="items handles">
-                        @foreach($game_data as $item)
-                            <li class="draggable" draggable="true" data-id="{{ $item['id'] }}">
-                                <img draggable="false" src="{{ $item['profile_img'] }}" alt="">
-                                <p>{{ $item['name'] }}</p>
-                            </li>
-                        @endforeach
-                    </ul>
+                <h3 id="numTries" class="alert right">Num Tries Remaining: 5</h3>
+            </div>
+            <div class="row">
+                <div id="accounts-container" class="col-md-12 well">
+
+                    <p id="drop-msg" class="alert txt-center"></p>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <ul class="items tweets">
-                        @foreach($game_data as $item)
-                            <li data-id="{{ $item['id'] }}">
-                                <div class="droparea"></div>
-                                <p>{{ $item['tweet'] }}</p>
-                            </li>
-                        @endforeach
-                    </ul>
+                <div id="tweets-container" class="col-md-12">
                 </div>
             </div>
         </div>
 
 
         {{ HTML::script('js/main.js') }}
+        <script>
+            App.gameCollection = new App.Collections.Account({{ json_encode($game_data['accounts']) }});
+            App.accountsView = new App.Views.GameItemAccounts({ collection: App.gameCollection });
+            App.tweetsView = new App.Views.GameItemTweets({ collection: App.gameCollection });
+
+            $("#accounts-container").prepend(App.accountsView.render().el);
+            $("#tweets-container").prepend(App.tweetsView.render().el);
+           </script>
     </body>
 </html>

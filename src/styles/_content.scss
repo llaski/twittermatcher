@@ -1,0 +1,49 @@
+%game-data {
+    li {
+        display: inline-block;
+        padding: 20px;
+        width: 19%;
+        vertical-align: top;
+        text-align: center;
+    }
+
+    img {
+        @extend .circle;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.accounts {
+    @extend %game-data;
+}
+
+
+.tweets {
+    @extend %game-data;
+
+    li {
+
+        .droparea {
+            height: 120px;
+            padding-top: 20px;
+            width: 100%;
+            display: inline-block;
+            border: 2px dotted gray;
+            margin-bottom: 10px;
+            @include border-radius(5px);
+
+            &.over {
+                background: $state-warning-bg;
+            }
+
+            &.correct {
+                background: $state-success-bg;
+            }
+        }
+
+        p {
+            word-wrap: break-word;
+        }
+    }
+}

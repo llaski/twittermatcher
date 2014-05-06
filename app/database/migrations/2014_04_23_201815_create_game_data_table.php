@@ -16,10 +16,11 @@ class CreateGameDataTable extends Migration {
 			$table->increments('id');
 			$table->string('name', 100)->nullable()->default(NULL);
 			$table->string('screen_name', 100)->unique();
-			$table->string('tweet', 255)->nullable()->default(NULL);
+			$table->text('tweet')->nullable()->default(NULL);
 			$table->dateTime('tweet_time')->nullable()->default(NULL);
 			$table->string('url', 255)->nullable()->default(NULL);
 			$table->string('profile_img', 255)->nullable()->default(NULL);
+            $table->boolean('status')->default(1);
 			$table->timestamps();
 		});
 	}

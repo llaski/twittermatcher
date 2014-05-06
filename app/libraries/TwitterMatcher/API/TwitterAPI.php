@@ -2,10 +2,18 @@
 
 // use Cache;
 use Twitter; //thujohn twitter package
+use Curl;
 
 class TwitterAPI {
 
+    protected $curl;
+
     private $url = 'https://twitter.com/';
+
+    public function __construct(Curl $curl)
+    {
+        $this->curl = $curl;
+    }
 
     /**
      * Get Tweets by User Screename
@@ -26,8 +34,12 @@ class TwitterAPI {
             'format' => 'array'
         ));
 
+
         if (isset($user_data[0]))
         {
+            $status = 1;
+            if ( ! $this->checkProfileImgUrl($user_data[0]['user']['profile_image_url'])) $status = 0;
+
             $results = array(
                 'name' => $user_data[0]['user']['name'],
                 'screen_name' => $user_data[0]['user']['screen_name'],
@@ -35,14 +47,26 @@ class TwitterAPI {
                 'tweet_time' => date('Y-m-d H:i:s', strtotime($user_data[0]['created_at'])),
                 'url' => $this->url.$user_data[0]['user']['screen_name'],
                 'profile_img' => $user_data[0]['user']['profile_image_url'],
+                'status' => $status
             );
         }
 
 
             // Cache::put($screen_name.'results', $results, 60); //60 minutes
         // }
-
+        sleep(rand(3, 6));
         return $results;
+    }
+
+    private function checkProfileImgUrl($profile_image_url)
+    {
+        $this->curl->create($profile_image_url);
+        $this->curl->execute();
+
+        if (isset($this->curl->info['http_code']) && $this->curl->info['http_code'] == 200)
+            return true;
+        else
+            return false;
     }
 
     private function cleanTweet($tweet)

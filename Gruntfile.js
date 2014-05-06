@@ -25,7 +25,13 @@ module.exports = function (grunt) {
             scripts: [
                 'src/bower_components/jquery/jquery.js',
                 'src/bower_components/bootstrap-sass/vendor/assets/javascripts/*.js',
-                'src/scripts/app.js'
+                'src/bower_components/underscore/underscore.js',
+                'src/bower_components/backbone/backbone.js',
+                'src/js/app.js',
+                'src/js/templates.js',
+                'src/js/models/*.js',
+                'src/js/views/*.js',
+                'src/js/collections/*.js',
             ],
             pub: 'public',
             pubCss: 'public/css/*.css',
@@ -51,7 +57,7 @@ module.exports = function (grunt) {
                 cssDir: 'public/css',
                 generatedImagesDir: 'src/img',
                 imagesDir: 'public/img',
-                javascriptsDir: 'src/scripts',
+                javascriptsDir: 'src/js',
                 fontsDir: 'public/fonts',
                 importPath: 'src/bower_components',
                 httpImagesPath: '/img',
